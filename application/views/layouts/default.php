@@ -21,13 +21,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Новости</a>
+                            <a class="nav-link" href="/">О музее</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/posts">Новости</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/objects">Экспонаты</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">Обо мне</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Обратная связь</a>

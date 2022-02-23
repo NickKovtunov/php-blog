@@ -9,16 +9,16 @@ use application\models\Admin;
 class MainController extends Controller {
 
 	public function indexAction() {
+		$this->view->render('О музее');
+	}
+
+	public function postsAction() {
 		$pagination = new Pagination($this->route, $this->model->postsCount());
 		$vars = [
 			'pagination' => $pagination->get(),
 			'list' => $this->model->postsList($this->route),
 		];
-		$this->view->render('Главная страница', $vars);
-	}
-
-	public function aboutAction() {
-		$this->view->render('Обо мне');
+		$this->view->render('Новости', $vars);
 	}
 
 	public function contactAction() {

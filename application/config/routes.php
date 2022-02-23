@@ -6,13 +6,13 @@ return [
 		'controller' => 'main',
 		'action' => 'index',
 	],
+	'posts' => [
+		'controller' => 'main',
+		'action' => 'posts',
+	],
 	'main/index/{page:\d+}' => [
 		'controller' => 'main',
 		'action' => 'index',
-	],
-	'about' => [
-		'controller' => 'main',
-		'action' => 'about',
 	],
 	'contact' => [
 		'controller' => 'main',
