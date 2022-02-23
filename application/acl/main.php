@@ -4,6 +4,7 @@ return [
 	'all' => [
 		'index',
 		'posts',
+		'objects',
 		'contact',
 		'post',
 	],

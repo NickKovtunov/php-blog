@@ -28,6 +28,10 @@ class Main extends Model {
 		return $this->db->column('SELECT COUNT(id) FROM posts');
 	}
 
+	public function objectsCount() {
+		return $this->db->column('SELECT COUNT(id) FROM objects');
+	}
+
 	public function postsList($route) {
 		$max = 10;
 		$params = [
@@ -37,4 +41,12 @@ class Main extends Model {
 		return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
 	}
 
+	public function objectsList($route) {
+		$max = 10;
+		$params = [
+			'max' => $max,
+			'start' => ((($route['page'] ?? 1) - 1) * $max),
+		];
+		return $this->db->row('SELECT * FROM objects ORDER BY id DESC LIMIT :start, :max', $params);
+	}
 }

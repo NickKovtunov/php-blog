@@ -10,6 +10,10 @@ return [
 		'controller' => 'main',
 		'action' => 'posts',
 	],
+	'objects' => [
+		'controller' => 'main',
+		'action' => 'objects',
+	],
 	'main/index/{page:\d+}' => [
 		'controller' => 'main',
 		'action' => 'index',

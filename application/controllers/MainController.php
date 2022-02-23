@@ -21,6 +21,15 @@ class MainController extends Controller {
 		$this->view->render('Новости', $vars);
 	}
 
+	public function objectsAction() {
+		$pagination = new Pagination($this->route, $this->model->objectsCount());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $this->model->objectsList($this->route),
+		];
+		$this->view->render('Экспонаты', $vars);
+	}
+
 	public function contactAction() {
 		if (!empty($_POST)) {
 			if (!$this->model->contactValidate($_POST)) {
