@@ -35,17 +35,17 @@ return [
 		'controller' => 'admin',
 		'action' => 'logout',
 	],
-	'admin/add' => [
+	'admin/addPost' => [
 		'controller' => 'admin',
-		'action' => 'add',
+		'action' => 'addPost',
 	],
-	'admin/edit/{id:\d+}' => [
+	'admin/editPost/{id:\d+}' => [
 		'controller' => 'admin',
-		'action' => 'edit',
+		'action' => 'editPost',
 	],
-	'admin/delete/{id:\d+}' => [
+	'admin/deletePost/{id:\d+}' => [
 		'controller' => 'admin',
-		'action' => 'delete',
+		'action' => 'deletePost',
 	],
 	'admin/posts/{page:\d+}' => [
 		'controller' => 'admin',
@@ -54,5 +54,25 @@ return [
 	'admin/posts' => [
 		'controller' => 'admin',
 		'action' => 'posts',
+	],
+	'admin/addObject' => [
+		'controller' => 'admin',
+		'action' => 'addObject',
+	],
+	'admin/editObject/{id:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'editObject',
+	],
+	'admin/deleteObject/{id:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'deleteObject',
+	],
+	'admin/objects/{page:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'objects',
+	],
+	'admin/objects' => [
+		'controller' => 'admin',
+		'action' => 'objects',
 	],
 ];

@@ -1,4 +1,4 @@
-<header class="masthead" style="background-image: url('/public/materials/posts/<?php echo $data['id']; ?>.jpg')">
+<header class="masthead" style="background-image: url('/public/materials/objects/<?php echo $data['id']; ?>.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">

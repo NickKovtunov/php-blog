@@ -11,10 +11,14 @@ return [
 		//
 	],
 	'admin' => [
-		'posts',
 		'logout',
-		'add',
-		'edit',
-		'delete',
+		'posts',
+		'addPost',
+		'editPost',
+		'deletePost',
+		'objects',
+		'addObject',
+		'editObject',
+		'deleteObject',
 	],
 ];

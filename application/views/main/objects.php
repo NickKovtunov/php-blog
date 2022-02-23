@@ -23,7 +23,6 @@
                             <h6 class="post-subtitle"><?php echo htmlspecialchars($val['date'], ENT_QUOTES); ?></h6>
                             <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
                         </a>
-                        <!--p class="post-meta">Идентфикатор этого поста <?php echo $val['id']; ?></p-->
                     </div>
                     <hr>
                 <?php endforeach; ?>

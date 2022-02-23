@@ -11,27 +11,38 @@
         <script src="/public/scripts/form.js"></script>
         <script src="/public/scripts/popper.js"></script>
         <script src="/public/scripts/bootstrap.js"></script>
-        <script src="/public/scripts/core.js"></script>
     </head>
     <body class="fixed-nav sticky-footer bg-dark">
         <?php if ($this->route['action'] != 'login'): ?>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-                <a class="navbar-brand" href="/admin/posts">Панель Администратора</a>
+                <a class="navbar-brand" href="/">Панель Администратора</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/add">
+                            <a class="nav-link" href="/admin/addPost">
                             <i class="fa fa-fw fa-plus"></i>
-                            <span class="nav-link-text">Добавить пост</span>
+                            <span class="nav-link-text">Добавить новость</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/posts">
                             <i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Посты</span>
+                            <span class="nav-link-text">Новости</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/addObject">
+                            <i class="fa fa-fw fa-plus"></i>
+                            <span class="nav-link-text">Добавить экспонат</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/objects">
+                            <i class="fa fa-fw fa-list"></i>
+                            <span class="nav-link-text">Экспонаты</span>
                             </a>
                         </li>
                         <li class="nav-item">

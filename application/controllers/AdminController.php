@@ -15,19 +15,24 @@ class AdminController extends Controller {
 
 	public function loginAction() {
 		if (isset($_SESSION['admin'])) {
-			$this->view->redirect('admin/add');
+			$this->view->redirect('admin/posts');
 		}
 		if (!empty($_POST)) {
 			if (!$this->model->loginValidate($_POST)) {
 				$this->view->message('error', $this->model->error);
 			}
 			$_SESSION['admin'] = true;
-			$this->view->location('admin/add');
+			$this->view->location('admin/posts');
 		}
 		$this->view->render('Вход');
 	}
 
-	public function addAction() {
+	public function logoutAction() {
+		unset($_SESSION['admin']);
+		$this->view->redirect('admin/login');
+	}
+
+	public function addPostAction() {
 		if (!empty($_POST)) {
 			if (!$this->model->postValidate($_POST, 'add')) {
 				$this->view->message('error', $this->model->error);
@@ -37,12 +42,12 @@ class AdminController extends Controller {
 				$this->view->message('error', 'Ошибка обработки запроса');
 			}
 			$this->model->postUploadImage($_FILES['img']['tmp_name'], $id);
-			$this->view->message('success', 'Пост добавлен');
+			$this->view->message('success', 'Новость добавлена');
 		}
-		$this->view->render('Добавить пост');
+		$this->view->render('Добавить новость');
 	}
 
-	public function editAction() {
+	public function editPostAction() {
 		if (!$this->model->isPostExists($this->route['id'])) {
 			$this->view->errorCode(404);
 		}
@@ -59,20 +64,15 @@ class AdminController extends Controller {
 		$vars = [
 			'data' => $this->model->postData($this->route['id'])[0],
 		];
-		$this->view->render('Редактировать пост', $vars);
+		$this->view->render('Редактировать новость', $vars);
 	}
 
-	public function deleteAction() {
+	public function deletePostAction() {
 		if (!$this->model->isPostExists($this->route['id'])) {
 			$this->view->errorCode(404);
 		}
 		$this->model->postDelete($this->route['id']);
 		$this->view->redirect('admin/posts');
-	}
-
-	public function logoutAction() {
-		unset($_SESSION['admin']);
-		$this->view->redirect('admin/login');
 	}
 
 	public function postsAction() {
@@ -82,6 +82,59 @@ class AdminController extends Controller {
 			'pagination' => $pagination->get(),
 			'list' => $mainModel->postsList($this->route),
 		];
-		$this->view->render('Посты', $vars);
+		$this->view->render('Новости', $vars);
+	}
+
+	public function addObjectAction() {
+		if (!empty($_POST)) {
+			if (!$this->model->objectValidate($_POST, 'add')) {
+				$this->view->message('error', $this->model->error);
+			}
+			$id = $this->model->objectAdd($_POST);
+			if (!$id) {
+				$this->view->message('error', 'Ошибка обработки запроса');
+			}
+			$this->model->objectUploadImage($_FILES['img']['tmp_name'], $id);
+			$this->view->message('success', 'Экспонат добавлен');
+		}
+		$this->view->render('Добавить экспонат');
+	}
+
+	public function editObjectAction() {
+		if (!$this->model->isObjectExists($this->route['id'])) {
+			$this->view->errorCode(404);
+		}
+		if (!empty($_POST)) {
+			if (!$this->model->objectValidate($_POST, 'edit')) {
+				$this->view->message('error', $this->model->error);
+			}
+			$this->model->objectEdit($_POST, $this->route['id']);
+			if ($_FILES['img']['tmp_name']) {
+				$this->model->objectUploadImage($_FILES['img']['tmp_name'], $this->route['id']);
+			}
+			$this->view->message('success', 'Сохранено');
+		}
+		$vars = [
+			'data' => $this->model->objectData($this->route['id'])[0],
+		];
+		$this->view->render('Редактировать экспонат', $vars);
+	}
+
+	public function deleteObjectAction() {
+		if (!$this->model->isObjectExists($this->route['id'])) {
+			$this->view->errorCode(404);
+		}
+		$this->model->objectDelete($this->route['id']);
+		$this->view->redirect('admin/objects');
+	}
+
+	public function objectsAction() {
+		$mainModel = new Main;
+		$pagination = new Pagination($this->route, $mainModel->objectsCount());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $mainModel->objectsList($this->route),
+		];
+		$this->view->render('Экспонаты', $vars);
 	}
 }

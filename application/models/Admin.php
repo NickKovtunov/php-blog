@@ -69,7 +69,7 @@ class Admin extends Model {
 		$img = new Imagick($path);
 		$img->cropThumbnailImage(1080, 600);
 		$img->setImageCompressionQuality(80);
-		$img->writeImage('public/materials/'.$id.'.jpg');
+		$img->writeImage('public/materials/posts/'.$id.'.jpg');
 	}
 
 	public function isPostExists($id) {
@@ -84,7 +84,7 @@ class Admin extends Model {
 			'id' => $id,
 		];
 		$this->db->query('DELETE FROM posts WHERE id = :id', $params);
-		unlink('public/materials/'.$id.'.jpg');
+		unlink('public/materials/posts/'.$id.'.jpg');
 	}
 
 	public function postData($id) {
@@ -94,4 +94,79 @@ class Admin extends Model {
 		return $this->db->row('SELECT * FROM posts WHERE id = :id', $params);
 	}
 
+	public function objectValidate($post, $type) {
+		$nameLen = iconv_strlen($post['name']);
+		$descriptionLen = iconv_strlen($post['description']);
+		$textLen = iconv_strlen($post['text']);
+		$dateLen = iconv_strlen($post['date']);
+		if ($nameLen == 0) {
+			$this->error = 'Не заполнено название';
+			return false;
+		} elseif ($descriptionLen == 0) {
+			$this->error = 'Не заполнено описание';
+			return false;
+		} elseif ($textLen == 0) {
+			$this->error = 'Не заполнен текст';
+			return false;
+		} elseif ($dateLen == 0) {
+			$this->error = 'Не заполнена дата';
+			return false;
+		}
+		if (empty($_FILES['img']['tmp_name']) and $type == 'add') {
+			$this->error = 'Не выбрано изображение';
+			return false;
+		}
+		return true;
+	}
+
+	public function objectAdd($post) {
+		$params = [
+			'date' => $post['date'],
+			'name' => $post['name'],
+			'description' => $post['description'],
+			'text' => $post['text'],
+		];
+		$this->db->query('INSERT INTO objects (date,name,description,text) VALUES (:date,:name, :description, :text)', $params);
+		return $this->db->lastInsertId();
+	}
+
+	public function objectEdit($post, $id) {
+		$params = [
+			'id' => $id,
+			'date' => $post['date'],
+			'name' => $post['name'],
+			'description' => $post['description'],
+			'text' => $post['text'],
+		];
+		$this->db->query('UPDATE objects SET date = :date, name = :name, description = :description, text = :text WHERE id = :id', $params);
+	}
+
+	public function objectUploadImage($path, $id) {
+		$img = new Imagick($path);
+		$img->cropThumbnailImage(1080, 600);
+		$img->setImageCompressionQuality(80);
+		$img->writeImage('public/materials/objects/'.$id.'.jpg');
+	}
+
+	public function isObjectExists($id) {
+		$params = [
+			'id' => $id,
+		];
+		return $this->db->column('SELECT id FROM objects WHERE id = :id', $params);
+	}
+
+	public function objectDelete($id) {
+		$params = [
+			'id' => $id,
+		];
+		$this->db->query('DELETE FROM objects WHERE id = :id', $params);
+		unlink('public/materials/objects/'.$id.'.jpg');
+	}
+
+	public function objectData($id) {
+		$params = [
+			'id' => $id,
+		];
+		return $this->db->row('SELECT * FROM objects WHERE id = :id', $params);
+	}
 }
