@@ -22,18 +22,22 @@ class Admin extends Model {
 		$nameLen = iconv_strlen($post['name']);
 		$descriptionLen = iconv_strlen($post['description']);
 		$textLen = iconv_strlen($post['text']);
-		if ($nameLen < 3 or $nameLen > 100) {
-			$this->error = 'Название должно содержать от 3 до 100 символов';
+		$dateLen = iconv_strlen($post['date']);
+		if ($nameLen == 0) {
+			$this->error = 'Не заполнено название';
 			return false;
-		} elseif ($descriptionLen < 3 or $descriptionLen > 100) {
-			$this->error = 'Описание должно содержать от 3 до 100 символов';
+		} elseif ($descriptionLen == 0) {
+			$this->error = 'Не заполнено описание';
 			return false;
-		} elseif ($textLen < 10 or $textLen > 5000) {
-			$this->error = 'Текст должнен содержать от 10 до 5000 символов';
+		} elseif ($textLen == 0) {
+			$this->error = 'Не заполнен текст';
+			return false;
+		} elseif ($dateLen == 0) {
+			$this->error = 'Не заполнена дата';
 			return false;
 		}
 		if (empty($_FILES['img']['tmp_name']) and $type == 'add') {
-			$this->error = 'Изображение не выбрано';
+			$this->error = 'Не выбрано изображение';
 			return false;
 		}
 		return true;
@@ -41,22 +45,24 @@ class Admin extends Model {
 
 	public function postAdd($post) {
 		$params = [
+			'date' => $post['date'],
 			'name' => $post['name'],
 			'description' => $post['description'],
 			'text' => $post['text'],
 		];
-		$this->db->query('INSERT INTO posts (name,description,text) VALUES (:name, :description, :text)', $params);
+		$this->db->query('INSERT INTO posts (date,name,description,text) VALUES (:date,:name, :description, :text)', $params);
 		return $this->db->lastInsertId();
 	}
 
 	public function postEdit($post, $id) {
 		$params = [
 			'id' => $id,
+			'date' => $post['date'],
 			'name' => $post['name'],
 			'description' => $post['description'],
 			'text' => $post['text'],
 		];
-		$this->db->query('UPDATE posts SET name = :name, description = :description, text = :text WHERE id = :id', $params);
+		$this->db->query('UPDATE posts SET date = :date, name = :name, description = :description, text = :text WHERE id = :id', $params);
 	}
 
 	public function postUploadImage($path, $id) {

@@ -7,6 +7,10 @@
                     <div class="col-sm-4">
                         <form action="/admin/add" method="post">
                             <div class="form-group">
+                                <label>Дата</label>
+                                <input class="form-control" type="date" name="date">
+                            </div>
+                            <div class="form-group">
                                 <label>Название</label>
                                 <input class="form-control" type="text" name="name">
                             </div>

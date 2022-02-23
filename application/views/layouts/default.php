@@ -24,6 +24,9 @@
                             <a class="nav-link" href="/">Новости</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/objects">Экспонаты</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/about">Обо мне</a>
                         </li>
                         <li class="nav-item">
