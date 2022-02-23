@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Видеоуроки PHP</h1>
-                    <span class="subheading">простой блог на php - oop - mvc</span>
+                    <h1 class="text-shadow">Таганрогский<br>политехнический музей</h1>
+                    <span class="subheading text-shadow">Новости</span>
                 </div>
             </div>
         </div>

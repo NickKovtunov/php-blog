@@ -41,12 +41,11 @@ class Admin extends Model {
 
 	public function postAdd($post) {
 		$params = [
-			'id' => '',
 			'name' => $post['name'],
 			'description' => $post['description'],
 			'text' => $post['text'],
 		];
-		$this->db->query('INSERT INTO posts VALUES (:id, :name, :description, :text)', $params);
+		$this->db->query('INSERT INTO posts (name,description,text) VALUES (:name, :description, :text)', $params);
 		return $this->db->lastInsertId();
 	}
 
