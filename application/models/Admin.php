@@ -175,4 +175,80 @@ class Admin extends Model {
 		];
 		return $this->db->row('SELECT * FROM objects WHERE id = :id', $params);
 	}
+
+	public function eventValidate($post, $type) {
+		$nameLen = iconv_strlen($post['name']);
+		$descriptionLen = iconv_strlen($post['description']);
+		$textLen = iconv_strlen($post['text']);
+		$dateLen = iconv_strlen($post['date']);
+		if ($nameLen == 0) {
+			$this->error = 'Не заполнено название';
+			return false;
+		} elseif ($descriptionLen == 0) {
+			$this->error = 'Не заполнено описание';
+			return false;
+		} elseif ($textLen == 0) {
+			$this->error = 'Не заполнен текст';
+			return false;
+		} elseif ($dateLen == 0) {
+			$this->error = 'Не заполнена дата';
+			return false;
+		}
+		if (empty($_FILES['img']['tmp_name']) and $type == 'add') {
+			$this->error = 'Не выбрано изображение';
+			return false;
+		}
+		return true;
+	}
+
+	public function eventAdd($post) {
+		$params = [
+			'date' => $post['date'],
+			'name' => $post['name'],
+			'description' => $post['description'],
+			'text' => $post['text'],
+		];
+		$this->db->query('INSERT INTO events (date,name,description,text) VALUES (:date,:name, :description, :text)', $params);
+		return $this->db->lastInsertId();
+	}
+
+	public function eventEdit($post, $id) {
+		$params = [
+			'id' => $id,
+			'date' => $post['date'],
+			'name' => $post['name'],
+			'description' => $post['description'],
+			'text' => $post['text'],
+		];
+		$this->db->query('UPDATE events SET date = :date, name = :name, description = :description, text = :text WHERE id = :id', $params);
+	}
+
+	public function eventUploadImage($path, $id) {
+		$img = new Imagick($path);
+		$img->cropThumbnailImage(1080, 600);
+		$img->setImageCompressionQuality(80);
+		$img->writeImage('public/materials/events/'.$id.'.jpg');
+	}
+
+	public function isEventExists($id) {
+		$params = [
+			'id' => $id,
+		];
+		return $this->db->column('SELECT id FROM events WHERE id = :id', $params);
+	}
+
+	public function eventDelete($id) {
+		$params = [
+			'id' => $id,
+		];
+		$this->db->query('DELETE FROM events WHERE id = :id', $params);
+		unlink('public/materials/events/'.$id.'.jpg');
+	}
+
+	public function eventData($id) {
+		$params = [
+			'id' => $id,
+		];
+		return $this->db->row('SELECT * FROM events WHERE id = :id', $params);
+	}
 }

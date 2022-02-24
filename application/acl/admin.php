@@ -20,5 +20,9 @@ return [
 		'addObject',
 		'editObject',
 		'deleteObject',
+		'events',
+		'addEvent',
+		'editEvent',
+		'deleteEvent',
 	],
 ];

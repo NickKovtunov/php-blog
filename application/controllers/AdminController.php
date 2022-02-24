@@ -137,4 +137,57 @@ class AdminController extends Controller {
 		];
 		$this->view->render('Экспонаты', $vars);
 	}
+
+	public function addEventAction() {
+		if (!empty($_POST)) {
+			if (!$this->model->eventValidate($_POST, 'add')) {
+				$this->view->message('error', $this->model->error);
+			}
+			$id = $this->model->eventAdd($_POST);
+			if (!$id) {
+				$this->view->message('error', 'Ошибка обработки запроса');
+			}
+			$this->model->eventUploadImage($_FILES['img']['tmp_name'], $id);
+			$this->view->message('success', 'Мероприятие добавлено');
+		}
+		$this->view->render('Добавить мероприятие');
+	}
+
+	public function editEventAction() {
+		if (!$this->model->isEventExists($this->route['id'])) {
+			$this->view->errorCode(404);
+		}
+		if (!empty($_POST)) {
+			if (!$this->model->eventValidate($_POST, 'edit')) {
+				$this->view->message('error', $this->model->error);
+			}
+			$this->model->eventEdit($_POST, $this->route['id']);
+			if ($_FILES['img']['tmp_name']) {
+				$this->model->eventUploadImage($_FILES['img']['tmp_name'], $this->route['id']);
+			}
+			$this->view->message('success', 'Сохранено');
+		}
+		$vars = [
+			'data' => $this->model->eventData($this->route['id'])[0],
+		];
+		$this->view->render('Редактировать мероприятие', $vars);
+	}
+
+	public function deleteEventAction() {
+		if (!$this->model->isEventExists($this->route['id'])) {
+			$this->view->errorCode(404);
+		}
+		$this->model->eventDelete($this->route['id']);
+		$this->view->redirect('admin/events');
+	}
+
+	public function eventsAction() {
+		$mainModel = new Main;
+		$pagination = new Pagination($this->route, $mainModel->eventsCount());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $mainModel->eventsList($this->route),
+		];
+		$this->view->render('Мероприятия', $vars);
+	}
 }

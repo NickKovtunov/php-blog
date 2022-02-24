@@ -14,6 +14,14 @@ return [
 		'controller' => 'main',
 		'action' => 'post',
 	],
+	'events' => [
+		'controller' => 'main',
+		'action' => 'events',
+	],
+	'event/{id:\d+}' => [
+		'controller' => 'main',
+		'action' => 'event',
+	],
 	'objects' => [
 		'controller' => 'main',
 		'action' => 'objects',
@@ -94,5 +102,26 @@ return [
 	'admin/objects' => [
 		'controller' => 'admin',
 		'action' => 'objects',
+	],
+	
+	'admin/addEvent' => [
+		'controller' => 'admin',
+		'action' => 'addEvent',
+	],
+	'admin/editEvent/{id:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'editEvent',
+	],
+	'admin/deleteEvent/{id:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'deleteEvent',
+	],
+	'admin/events/{page:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'events',
+	],
+	'admin/events' => [
+		'controller' => 'admin',
+		'action' => 'events',
 	],
 ];

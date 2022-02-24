@@ -46,6 +46,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/admin/addEvent">
+                            <i class="fa fa-fw fa-plus"></i>
+                            <span class="nav-link-text">Добавить мероприятие</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/events">
+                            <i class="fa fa-fw fa-list"></i>
+                            <span class="nav-link-text">Мероприятия</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/admin/logout">
                             <i class="fa fa-fw fa-sign-out"></i>
                             <span class="nav-link-text">Выход</span>

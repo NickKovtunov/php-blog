@@ -28,6 +28,10 @@ class Main extends Model {
 		return $this->db->column('SELECT COUNT(id) FROM posts');
 	}
 
+	public function eventsCount() {
+		return $this->db->column('SELECT COUNT(id) FROM events');
+	}
+
 	public function objectsCount() {
 		return $this->db->column('SELECT COUNT(id) FROM objects');
 	}
@@ -55,6 +59,15 @@ class Main extends Model {
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
 		return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
+	}
+
+	public function eventsList($route) {
+		$max = 10;
+		$params = [
+			'max' => $max,
+			'start' => ((($route['page'] ?? 1) - 1) * $max),
+		];
+		return $this->db->row('SELECT * FROM events ORDER BY id DESC LIMIT :start, :max', $params);
 	}
 
 	public function objectsList($route) {

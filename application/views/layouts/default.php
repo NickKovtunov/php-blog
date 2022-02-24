@@ -27,6 +27,9 @@
                             <a class="nav-link" href="/posts">Новости</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/events">Мероприятия</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/objects">Все экспонаты</a>
                         </li>
                         <li class="nav-item">

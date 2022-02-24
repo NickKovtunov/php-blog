@@ -11,6 +11,8 @@ return [
 		'objects3',
 		'objects4',
 		'object',
+		'events',
+		'event',
 		'contact',
 	],
 	'authorize' => [

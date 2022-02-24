@@ -21,6 +21,15 @@ class MainController extends Controller {
 		$this->view->render('Новости', $vars);
 	}
 
+	public function eventsAction() {
+		$pagination = new Pagination($this->route, $this->model->eventsCount());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $this->model->eventsList($this->route),
+		];
+		$this->view->render('Мероприятия', $vars);
+	}
+
 	public function objectsAction() {
 		$pagination = new Pagination($this->route, $this->model->objectsCount());
 		$vars = [
@@ -86,6 +95,17 @@ class MainController extends Controller {
 			'data' => $adminModel->postData($this->route['id'])[0],
 		];
 		$this->view->render('Новость', $vars);
+	}
+
+	public function eventAction() {
+		$adminModel = new Admin;
+		if (!$adminModel->isEventExists($this->route['id'])) {
+			$this->view->errorCode(404);
+		}
+		$vars = [
+			'data' => $adminModel->eventData($this->route['id'])[0],
+		];
+		$this->view->render('Мероприятие', $vars);
 	}
 
 	public function objectAction() {
