@@ -10,9 +10,17 @@ return [
 		'controller' => 'main',
 		'action' => 'posts',
 	],
+	'post/{id:\d+}' => [
+		'controller' => 'main',
+		'action' => 'post',
+	],
 	'objects' => [
 		'controller' => 'main',
 		'action' => 'objects',
+	],
+	'object/{id:\d+}' => [
+		'controller' => 'main',
+		'action' => 'object',
 	],
 	'main/index/{page:\d+}' => [
 		'controller' => 'main',
@@ -21,10 +29,6 @@ return [
 	'contact' => [
 		'controller' => 'main',
 		'action' => 'contact',
-	],
-	'post/{id:\d+}' => [
-		'controller' => 'main',
-		'action' => 'post',
 	],
 	// AdminController
 	'admin/login' => [

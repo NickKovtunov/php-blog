@@ -4,9 +4,10 @@ return [
 	'all' => [
 		'index',
 		'posts',
-		'objects',
-		'contact',
 		'post',
+		'objects',
+		'object',
+		'contact',
 	],
 	'authorize' => [
 		//

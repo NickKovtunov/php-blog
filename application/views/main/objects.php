@@ -18,7 +18,7 @@
             <?php else: ?>
                 <?php foreach ($list as $val): ?>
                     <div class="post-preview">
-                        <a href="/post/<?php echo $val['id']; ?>">
+                        <a href="/object/<?php echo $val['id']; ?>">
                             <h2 class="post-title"><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></h2>
                             <h6 class="post-subtitle"><?php echo htmlspecialchars($val['date'], ENT_QUOTES); ?></h6>
                             <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
