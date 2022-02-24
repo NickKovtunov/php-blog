@@ -99,6 +99,7 @@ class Admin extends Model {
 		$descriptionLen = iconv_strlen($post['description']);
 		$textLen = iconv_strlen($post['text']);
 		$dateLen = iconv_strlen($post['date']);
+		$typeLen = iconv_strlen($post['type']);
 		if ($nameLen == 0) {
 			$this->error = 'Не заполнено название';
 			return false;
@@ -110,6 +111,9 @@ class Admin extends Model {
 			return false;
 		} elseif ($dateLen == 0) {
 			$this->error = 'Не заполнена дата';
+			return false;
+		} elseif ($typeLen == 0) {
+			$this->error = 'Не выбран тип экспоната';
 			return false;
 		}
 		if (empty($_FILES['img']['tmp_name']) and $type == 'add') {
@@ -125,8 +129,9 @@ class Admin extends Model {
 			'name' => $post['name'],
 			'description' => $post['description'],
 			'text' => $post['text'],
+			'type' => $post['type'],
 		];
-		$this->db->query('INSERT INTO objects (date,name,description,text) VALUES (:date,:name, :description, :text)', $params);
+		$this->db->query('INSERT INTO objects (date,name,description,text,type) VALUES (:date,:name, :description, :text, :type)', $params);
 		return $this->db->lastInsertId();
 	}
 
@@ -137,8 +142,9 @@ class Admin extends Model {
 			'name' => $post['name'],
 			'description' => $post['description'],
 			'text' => $post['text'],
+			'type' => $post['type'],
 		];
-		$this->db->query('UPDATE objects SET date = :date, name = :name, description = :description, text = :text WHERE id = :id', $params);
+		$this->db->query('UPDATE objects SET date = :date, name = :name, description = :description, text = :text, type = :type WHERE id = :id', $params);
 	}
 
 	public function objectUploadImage($path, $id) {

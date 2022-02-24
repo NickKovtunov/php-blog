@@ -8,7 +8,7 @@
                         <form action="/admin/editPost/<?php echo $data['id']; ?>" method="post" >
                             <div class="form-group">
                                 <label>Дата</label>
-                                <input class="form-control" type="date" name="date">
+                                <input class="form-control" type="date" name="date" value="<?php echo htmlspecialchars($data['date'], ENT_QUOTES); ?>">
                             </div>    
                             <div class="form-group">
                                 <label>Название</label>

@@ -27,7 +27,19 @@
                             <a class="nav-link" href="/posts">Новости</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/objects">Экспонаты</a>
+                            <a class="nav-link" href="/objects">Все экспонаты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/objects1">РиТ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/objects2">АиВТ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/objects3">АиК</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/objects4">ЭиИБ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Обратная связь</a>

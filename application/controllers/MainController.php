@@ -30,6 +30,42 @@ class MainController extends Controller {
 		$this->view->render('Экспонаты', $vars);
 	}
 
+	public function objects1Action() {
+		$pagination = new Pagination($this->route, $this->model->objects1Count());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $this->model->objects1List($this->route),
+		];
+		$this->view->render('Экспонаты', $vars);
+	}
+
+	public function objects2Action() {
+		$pagination = new Pagination($this->route, $this->model->objects2Count());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $this->model->objects2List($this->route),
+		];
+		$this->view->render('Экспонаты', $vars);
+	}
+
+	public function objects3Action() {
+		$pagination = new Pagination($this->route, $this->model->objects3Count());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $this->model->objects3List($this->route),
+		];
+		$this->view->render('Экспонаты', $vars);
+	}
+
+	public function objects4Action() {
+		$pagination = new Pagination($this->route, $this->model->objects4Count());
+		$vars = [
+			'pagination' => $pagination->get(),
+			'list' => $this->model->objects4List($this->route),
+		];
+		$this->view->render('Экспонаты', $vars);
+	}
+
 	public function contactAction() {
 		if (!empty($_POST)) {
 			if (!$this->model->contactValidate($_POST)) {

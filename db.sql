@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 
 CREATE TABLE IF NOT EXISTS `objects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` int(11) NOT NULL,
   `date` DATE  NOT NULL,
   `name` text NOT NULL,
   `description` text NOT NULL,

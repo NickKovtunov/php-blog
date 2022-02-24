@@ -8,8 +8,18 @@
                         <form action="/admin/editObject/<?php echo $data['id']; ?>" method="post" >
                             <div class="form-group">
                                 <label>Дата</label>
-                                <input class="form-control" type="date" name="date">
-                            </div>    
+                                <input class="form-control" type="date" name="date" value="<?php echo htmlspecialchars($data['date'], ENT_QUOTES); ?>">
+                            </div> 
+                            <div class="form-group">
+                                <label>Тип экспоната</label>
+                                <select class="form-control" name="type">
+                                    <option selected value="">Выбрать</option>
+                                    <option value="1">Радиотехника и телевидение</option>
+                                    <option value="2">Автоматика и ВТ</option>
+                                    <option value="3">Авиация и космонавтика</option>
+                                    <option value="4">Электроника и ИБ</option>
+                                </select>
+                            </div>   
                             <div class="form-group">
                                 <label>Название</label>
                                 <input class="form-control" type="text" value="<?php echo htmlspecialchars($data['name'], ENT_QUOTES); ?>" name="name">

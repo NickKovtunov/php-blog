@@ -18,6 +18,22 @@ return [
 		'controller' => 'main',
 		'action' => 'objects',
 	],
+	'objects1' => [
+		'controller' => 'main',
+		'action' => 'objects1',
+	],
+	'objects2' => [
+		'controller' => 'main',
+		'action' => 'objects2',
+	],
+	'objects3' => [
+		'controller' => 'main',
+		'action' => 'objects3',
+	],
+	'objects4' => [
+		'controller' => 'main',
+		'action' => 'objects4',
+	],
 	'object/{id:\d+}' => [
 		'controller' => 'main',
 		'action' => 'object',
