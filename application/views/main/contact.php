@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="page-heading">
-                    <h1>Напишите мне</h1>
-                    <span class="subheading">я постараюсь ответить в течении 24 часов</span>
+                    <h1>Таганрогский<br>политехнический музей</h1>
+                    <span class="subheading">Обратная связь</span>
                 </div>
             </div>
         </div>

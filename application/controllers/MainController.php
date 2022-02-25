@@ -80,7 +80,7 @@ class MainController extends Controller {
 			if (!$this->model->contactValidate($_POST)) {
 				$this->view->message('error', $this->model->error);
 			}
-			mail('kovtunovtn@gmail.com', 'Сообщение из блога', $_POST['name'].'|'.$_POST['email'].'|'.$_POST['text']);
+			mail('nakovtunov@gmail.com', 'Сообщение из блога', $_POST['name'].'|'.$_POST['email'].'|'.$_POST['text']);
 			$this->view->message('success', 'Сообщение отправлено Администратору');
 		}
 		$this->view->render('Контакты');
