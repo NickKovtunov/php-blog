@@ -80,7 +80,7 @@ class MainController extends Controller {
 			if (!$this->model->contactValidate($_POST)) {
 				$this->view->message('error', $this->model->error);
 			}
-			mail('nakovtunov@gmail.com', 'Сайт музея. Обратная связь', 'Обратная связь от пользователя '.$_POST['name'].' ('.$_POST['email'].'): '.$_POST['text']);
+			mail('kovtunovtn@gmail.com', 'Сайт музея. Обратная связь', 'Обратная связь от пользователя '.$_POST['name'].' ('.$_POST['email'].'): '.$_POST['text']);
 			$this->view->message('success', 'Сообщение отправлено Администратору');
 		}
 		$this->view->render('Контакты');
@@ -91,7 +91,7 @@ class MainController extends Controller {
 			if (!$this->model->visitValidate($_POST)) {
 				$this->view->message('error', $this->model->error);
 			}
-			mail('nakovtunov@gmail.com', 'Сайт музея. Запись в музей', 'Запись в музей от пользователя '.$_POST['name'].' ('.$_POST['email'].') на дату '.$_POST['date'].' со следующим комментарием'.$_POST['text']);
+			mail('kovtunovtn@gmail.com', 'Сайт музея. Запись в музей', 'Запись в музей от пользователя '.$_POST['name'].' ('.$_POST['email'].') на дату '.$_POST['date'].' со следующим комментарием: '.$_POST['text']);
 			$this->view->message('success', 'Сообщение отправлено Администратору');
 		}
 		$this->view->render('Записаться');
