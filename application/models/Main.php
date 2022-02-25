@@ -24,6 +24,23 @@ class Main extends Model {
 		return true;
 	}
 
+	public function visitValidate($post) {
+		$nameLen = iconv_strlen($post['name']);
+		$textLen = iconv_strlen($post['text']);
+		$dateLen = iconv_strlen($post['date']);
+		if ($nameLen == 0) {
+			$this->error = 'Имя не заполнено';
+			return false;
+		} elseif (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
+			$this->error = 'E-mail указан неверно';
+			return false;
+		} elseif ($dateLen == 0) {
+			$this->error = 'Дата и время не выбраны';
+			return false;
+		}
+		return true;
+	}
+
 	public function postsCount() {
 		return $this->db->column('SELECT COUNT(id) FROM posts');
 	}

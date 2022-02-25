@@ -54,6 +54,10 @@ return [
 		'controller' => 'main',
 		'action' => 'contact',
 	],
+	'visit' => [
+		'controller' => 'main',
+		'action' => 'visit',
+	],
 	// AdminController
 	'admin/login' => [
 		'controller' => 'admin',
