@@ -58,7 +58,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM posts where date <= CURDATE() ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 
 	public function eventsList($route) {
@@ -67,7 +67,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM events ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM events where date >= CURDATE() ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 
 	public function objectsList($route) {
@@ -76,7 +76,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM objects ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM objects ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 
 	public function objects1List($route) {
@@ -85,7 +85,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM objects where type = 1 ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM objects where type = 1 ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 
 	public function objects2List($route) {
@@ -94,7 +94,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM objects where type = 2 ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM objects where type = 2 ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 
 	public function objects3List($route) {
@@ -103,7 +103,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM objects where type = 3 ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM objects where type = 3 ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 
 	public function objects4List($route) {
@@ -112,6 +112,6 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM objects where type = 4 ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM objects where type = 4 ORDER BY date DESC LIMIT :start, :max', $params);
 	}
 }
