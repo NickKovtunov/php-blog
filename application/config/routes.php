@@ -54,6 +54,10 @@ return [
 		'controller' => 'main',
 		'action' => 'contact',
 	],
+	'laboratory' => [
+		'controller' => 'main',
+		'action' => 'laboratory',
+	],
 	'visit' => [
 		'controller' => 'main',
 		'action' => 'visit',

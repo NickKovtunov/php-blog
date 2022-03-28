@@ -48,6 +48,9 @@
                             <a class="nav-link" href="/contact">Обратная связь</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/laboratory">Лаборатория</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/visit">Записаться</a>
                         </li>
                         <li class="nav-item">

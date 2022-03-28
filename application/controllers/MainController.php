@@ -86,6 +86,10 @@ class MainController extends Controller {
 		$this->view->render('Контакты');
 	}
 
+	public function laboratoryAction() {
+		$this->view->render('Лаборатория');
+	}
+
 	public function visitAction() {
 		if (!empty($_POST)) {
 			if (!$this->model->visitValidate($_POST)) {
